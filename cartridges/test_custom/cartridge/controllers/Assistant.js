@@ -39,24 +39,46 @@ server.post('SubmitAnswer', function (req, res, next) {
 
     // var questionId = requestBody.id;
     // var answer = requestBody.answer;
-	var reqKeywords ;
+	var reqKeywords=[] ;//who contains group name(item)
+
 	try{
 		
-		var listQuestions =CustomObjectMgr.getCustomObject("searchQuestion", requestBody.label ).getCustom()  ;
-		var listAnswer = JSON.parse(listQuestions.listAnswer)
+		for(var i = 0; i < requestBody.length; i++){
 
-	
-		for (var key in listAnswer.items) {
-			if (listAnswer.items.hasOwnProperty(key)) {
-				var values = listAnswer.items[key];
-				// Vérifier si requestBody.value appartient aux valeurs de cette clé
-				if (values.includes(requestBody.value)) {
-					// Si la valeur est trouvée dans cette clé, enregistrer la clé et sortir de la boucle
-					var foundKey = key;
-					break;
+			var listQuestions =CustomObjectMgr.getCustomObject("searchQuestion", requestBody[i].label ).getCustom()  ;
+
+			var listAnswer = JSON.parse(listQuestions.listAnswer)
+		
+			for (var key in listAnswer.items) {
+				if (listAnswer.items.hasOwnProperty(key)) {
+					var values = listAnswer.items[key];
+					// Vérifier si requestBody.value appartient aux valeurs de cette clé
+					if (values.includes(requestBody[i].value)) {
+						// Si la valeur est trouvée dans cette clé, enregistrer la clé et sortir de la boucle
+						var foundKey = key;
+						reqKeywords.push(foundKey);
+						break;
+					}
 				}
 			}
 		}
+
+	
+		// var listQuestions =CustomObjectMgr.getCustomObject("searchQuestion", requestBody.label ).getCustom()  ;
+		// var listAnswer = JSON.parse(listQuestions.listAnswer)
+
+	
+		// for (var key in listAnswer.items) {
+		// 	if (listAnswer.items.hasOwnProperty(key)) {
+		// 		var values = listAnswer.items[key];
+		// 		// Vérifier si requestBody.value appartient aux valeurs de cette clé
+		// 		if (values.includes(requestBody.value)) {
+		// 			// Si la valeur est trouvée dans cette clé, enregistrer la clé et sortir de la boucle
+		// 			var foundKey = key;
+		// 			break;
+		// 		}
+		// 	}
+		// }
 
 
 	}catch(e){
