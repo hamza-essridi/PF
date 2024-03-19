@@ -1,8 +1,7 @@
 {
-    "hostname": "zzte-085.dx.commercecloud.salesforce.com",
+  "hostname": "blfq-002.dx.commercecloud.salesforce.com",
   
-    "username": "essridi.h@decade.fr",
-    "password": "4aC}!YNdqJD)uY+Ny/At$+pM=PjoVz*C8a~n*b-~",
-    "cartridge": ["test_custom"],
-    "code-version": "SFRA_UPC_03_07_2024"
-  }
+  "username": "essridi.h@decade.fr",
+  "password": "7mY*X/g(SV~Hu{NA*=OPPOoZ$wq{mbyLfGFp(FZW",
+    "code-version": "vesion2blfq"
+}

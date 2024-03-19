@@ -1,0 +1,29 @@
+<html>
+
+<body>
+
+  <iscomment>
+    <h1>${pdict.param1}</h1>
+  </iscomment>
+  <p>hello from productsearched</p>
+  refineurl : ${pdict.refineurl} </br>
+  queryString :${pdict.queryString} </br>
+
+  <iscomment>
+    <div class="row product-grid" itemtype="http://schema.org/SomeProducts" itemid="#product">
+      <isinclude template="search/productGrid" />
+    </div>
+  </iscomment>
+  <isloop items="${pdict.productSearch.productIds}" var="product">
+    <div class="col-6 col-sm-4">
+      <isobject object="${product.productSearchHit}" view="searchhit">
+     
+        <isinclude url="${URLUtils.url('Tile-Show', 'pid', product.productID, 'swatches', true, 'ratings', true)}" />
+      </isobject>
+    </div>
+  </isloop>
+  <p>iam here</p>
+
+</body>
+
+</html>
